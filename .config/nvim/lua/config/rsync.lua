@@ -5,7 +5,9 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         local project_root = vim.fn.fnamemodify(file, ":p:h")
         local target = vim.fn.readfile(file)[1]
         vim.fn.jobstart(
-            ("rsync -az --filter=':- .gitignore' --exclude='.git' %s/ %s"):format(project_root, target),
+            ("rsync -az --filter=':- .gitignore' --filter=':- .rsync-ignore'"
+                .. "--exclude='.rsync-target' --exclude='.git'"
+                .. "%s/ %s"):format(project_root, target),
             { detach = true }
         )
     end,

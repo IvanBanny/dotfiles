@@ -16,8 +16,9 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTTIMEFORMAT="%F %T  "
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -89,7 +90,7 @@ fi
 
 # some more ls aliases
 alias ll='ls -alF'
-alias la='ls -A'
+alias la='ls -AC'
 alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
@@ -116,24 +117,50 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# Read .rsync-target from current or parent dirs
+_rsync_target() {
+    local dir="$PWD"
+    while [[ "$dir" != "/" ]]; do
+        if [[ -f "$dir/.rsync-target" ]]; then
+            echo "$dir" "$(head -1 "$dir/.rsync-target")"
+            return 0
+        fi
+        dir="$(dirname "$dir")"
+    done
+    echo "No .rsync-target found" >&2
+    return 1
+}
+
+rpush() {
+    read -r root target < <(_rsync_target) || return 1
+    rsync -az --filter=':- .gitignore' --filter=':- .rsync-ignore' \
+        --exclude='.rsync-target' --exclude='.git' "$root/" "$target"
+}
+
+rpull() {
+    read -r root target < <(_rsync_target) || return 1
+    rsync -az --filter=':- .gitignore' --filter=':- .rsync-ignore' \
+        --exclude='.rsync-target' --exclude='.git' "$target/" "$root"
+}
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/ivan/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+__conda_setup="$('$HOME/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/home/ivan/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "/home/ivan/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "$HOME/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="/home/ivan/miniconda3/bin:$PATH"
+        export PATH="$HOME/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
-
 alias vim="nvim"
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 

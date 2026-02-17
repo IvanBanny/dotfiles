@@ -1,3 +1,8 @@
-require("config.lazy")
-require("config.rsync")
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
+require("config.options")
+require("config.keymaps")
+require("config.autocmds")
+require("config.rsync")
+require("config.lazy")
