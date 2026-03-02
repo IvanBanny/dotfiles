@@ -3,7 +3,7 @@ local map = vim.keymap.set
 -- File operations
 map("n", "<leader>w", ":w<CR>")
 map("n", "<leader>q", ":q<CR>")
-map("n", "<leader>h", ":nohlsearch<CR>")
+map("n", "<Esc>", ":nohlsearch<CR>")
 
 -- Window navigation
 map("n", "<C-h>", "<C-w>h")
@@ -36,4 +36,7 @@ map({"n", "v"}, "<leader>y", "\"+y")
 map("n", "<leader>Y", "\"+Y")
 
 map("n", "<leader>d", "\"_d")
+
+-- Disable macro recording.
+map('n', 'q', "<Nop>")
 

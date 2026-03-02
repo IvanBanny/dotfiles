@@ -6,7 +6,10 @@ return {
     config = function()
         require("mason").setup()
 
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
         vim.lsp.config("clangd", {            
+            capabilities = capabilities,
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
             cmd = {
                 "clangd",
@@ -19,6 +22,7 @@ return {
         })
 
         vim.lsp.config("pyright", {
+            capabilities = capabilities,
             filetypes = { "python" },
             cmd = { "pyright-langserver", "--stdio" },
             settings = {
@@ -33,6 +37,7 @@ return {
         })
 
         vim.lsp.config("ruff", {
+            capabilities = capabilities,
             filetypes = { "python" },
             cmd = { "ruff", "server" },
         })
@@ -48,7 +53,6 @@ return {
                 local opts = { buffer = args.buf }
                 vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
                 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-                vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
                 vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
                 vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
                 vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)

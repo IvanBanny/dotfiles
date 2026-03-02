@@ -1,7 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -16,8 +12,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=20000
+HISTSIZE=100000
+HISTFILESIZE=50000
 HISTTIMEFORMAT="%F %T  "
 
 # check the window size after each command and, if necessary,
@@ -133,14 +129,18 @@ _rsync_target() {
 
 rpush() {
     read -r root target < <(_rsync_target) || return 1
-    rsync -az --filter=':- .gitignore' --filter=':- .rsync-ignore' \
-        --exclude='.rsync-target' --exclude='.git' "$root/" "$target"
+    rsync -az --filter=':- .rsync-ignore' \
+        --exclude='.rsync-target' --exclude='.rsync-ignore' \
+        --exclude='.git' --exclude='.gitignore' \
+        "$root/" "$target"
 }
 
 rpull() {
     read -r root target < <(_rsync_target) || return 1
-    rsync -az --filter=':- .gitignore' --filter=':- .rsync-ignore' \
-        --exclude='.rsync-target' --exclude='.git' "$target/" "$root"
+    rsync -az --filter=':- .rsync-ignore' \
+        --exclude='.rsync-target' --exclude='.rsync-ignore' \
+        --exclude='.git' --exclude='.gitignore' \
+        "$target/" "$root"
 }
 
 # >>> conda initialize >>>
