@@ -6,8 +6,7 @@ require("config.keymaps")
 require("config.autocmds")
 
 if vim.g.vscode then
-    -- vscode setup
-    local vscode = require("vscode-neovim")
+    require("config.vscode_keymaps")
 else
     -- native nvim setup
     require("config.rsync")

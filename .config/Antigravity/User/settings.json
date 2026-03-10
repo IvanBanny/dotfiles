@@ -1,0 +1,14 @@
+{
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "C_Cpp.default.compilerPath": "/usr/bin/gcc",
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+    "keyboard.dispatch": "keyCode",
+    "workbench.activityBar.location": "hidden",
+    "workbench.editor.editorActionsLocation": "hidden",
+    "editor.minimap.enabled": false,
+    "files.autoSave": "afterDelay",
+    "terminal.integrated.inheritEnv": false,
+    "workbench.statusBar.visible": false
+}
