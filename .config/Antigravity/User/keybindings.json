@@ -1,13 +1,8 @@
 [
-    // Toggle
+    // Whimsy
     {
         "key": "ctrl+s ctrl+b",
         "command": "workbench.action.toggleStatusbarVisibility"
-    },
-    {
-        "key": "space e",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "!inputFocus"
     },
     // Navigation
     {
@@ -51,6 +46,27 @@
         "command": "workbench.view.scm",
         "when": "!inputFocus"
     },
+    {
+        "key": "space e",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "workbench.action.toggleSidebarVisibility",
+                "workbench.action.focusActiveEditorGroup"
+            ]
+        },
+        "when": "!inputFocus"
+    },
+    {
+        "key": "space t",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active && !inputFocus"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!editorTextFocus && !filesExplorerFocus && !searchViewletFocus && !terminalFocus && neovim.mode != 'cmdline'"
+    },
     // File Tree
     {
         "key": "e",
@@ -70,6 +86,11 @@
         }
     },
     // Notebook
+    {
+        "key": "l",
+        "command": "notebook.cell.edit",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
     {
         "key": "a",
         "command": "notebook.cell.insertCodeCellAbove",
