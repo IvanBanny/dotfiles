@@ -10,5 +10,8 @@
     "editor.minimap.enabled": false,
     "files.autoSave": "afterDelay",
     "terminal.integrated.inheritEnv": false,
-    "workbench.statusBar.visible": false
+    "editor.inlineSuggest.enabled": false,
+    "editor.quickSuggestionsDelay": 60000,
+    "explorer.compactFolders": false,
+    "remote.autoForwardPortsSource": "hybrid"
 }

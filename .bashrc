@@ -143,6 +143,8 @@ rpull() {
         "$target/" "$root"
 }
 
+mvd() { mv ~/Downloads/"$(ls -t ~/Downloads | head -1)" .; }
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/home/ivan/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"

@@ -24,7 +24,7 @@
     {
         "key": "space ,",
         "command": "workbench.action.showAllEditors",
-        "when": "!inputFocus"
+        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
     },
     {
         "key": "tab",
@@ -39,12 +39,12 @@
     {
         "key": "space space",
         "command": "workbench.action.quickOpen",
-        "when": "!inputFocus"
+        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
     },
     {
         "key": "space g g",
         "command": "workbench.view.scm",
-        "when": "!inputFocus"
+        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
     },
     {
         "key": "space e",
@@ -55,12 +55,12 @@
                 "workbench.action.focusActiveEditorGroup"
             ]
         },
-        "when": "!inputFocus"
+        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
     },
     {
         "key": "space t",
         "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active && !inputFocus"
+        "when": "terminal.active && (filesExplorerFocus || sideBarFocus || searchViewletFocus)"
     },
     {
         "key": "ctrl+w",
