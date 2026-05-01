@@ -151,10 +151,10 @@ __conda_setup="$('/home/ivan/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/n
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "$HOME/miniconda3/etc/profile.d/conda.sh" ]; then
-        . "$HOME/miniconda3/etc/profile.d/conda.sh"
+    if [ -f "/home/ivan/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/ivan/miniconda3/etc/profile.d/conda.sh"
     else
-        export PATH="$HOME/miniconda3/bin:$PATH"
+        export PATH="/home/ivan/miniconda3/bin:$PATH"
     fi
 fi
 unset __conda_setup
@@ -165,6 +165,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 
 alias dot='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+yoink() { xclip -selection clipboard < "$1"; }
 
 
 export NVM_DIR="$HOME/.nvm"

@@ -87,6 +87,30 @@
     },
     // Notebook
     {
+        "key": "j",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "list.focusDown",
+                "list.scrollDown",
+                "list.scrollUp"
+            ]
+        },
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
+        "key": "k",
+        "command": "runCommands",
+        "args": {
+            "commands": [
+                "list.focusUp",
+                "list.scrollUp",
+                "list.scrollDown"
+            ]
+        },
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
+    },
+    {
         "key": "l",
         "command": "notebook.cell.edit",
         "when": "notebookEditorFocused && !inputFocus"
@@ -135,5 +159,13 @@
     {
         "key": "ctrl+n",
         "command": "-workbench.action.files.newUntitledFile"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+alt+b",
+        "command": "-workbench.action.toggleAuxiliaryBar"
     },
 ]
