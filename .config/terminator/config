@@ -1,0 +1,39 @@
+[global_config]
+[keybindings]
+  go_up = <Alt>k
+  go_down = <Alt>j
+  go_left = <Alt>h
+  go_right = <Alt>l
+  resize_up = <Primary><Shift>k
+  resize_down = <Primary><Shift>j
+  resize_left = <Primary><Shift>h
+  resize_right = <Primary><Shift>l
+  layout_launcher = <Alt>e
+  preferences_keybindings = ""
+[profiles]
+  [[default]]
+    background_color = "#140b05"
+    background_darkness = 0.95
+    background_type = transparent
+    cursor_fg_color = "#140b05"
+    cursor_bg_color = "#fc9505"
+    cursor_color_default = False
+    foreground_color = "#fc9505"
+    scrollbar_position = hidden
+    palette = "#140b05:#ff6f6f:#6fdb88:#eebb44:#6fabff:#c586c0:#7fd0d6:#fc9505:#8c8c8c:#ff8f8f:#8fe8a6:#ffd27a:#9cc4ff:#d9a6d6:#a6e2e6:#ffe4b8"
+    title_hide_sizetext = True
+    title_transmit_fg_color = "#140b05"
+    title_transmit_bg_color = "#fc9505"
+    title_receive_fg_color = "#140b05"
+    title_receive_bg_color = "#eebb44"
+    title_inactive_fg_color = "#8c8c8c"
+    title_inactive_bg_color = "#2a1b0a"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]

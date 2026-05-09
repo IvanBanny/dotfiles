@@ -40,7 +40,7 @@ esac
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
-#force_color_prompt=yes
+force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -53,8 +53,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Aperture theme colors (truecolor)
+#   fg/orange     #FC9505  38;2;252;149;5
+#   link/blue     #6FABFF  38;2;111;171;255
+#   positive/grn  #6FDB88  38;2;111;219;136
+#   neutral/gold  #EEBB44  38;2;238;187;68
+#   negative/red  #FF6F6F  38;2;255;111;111
+#   inactive/gry  #8C8C8C  38;2;140;140;140
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[1;38;2;252;149;5m\]\u@\h\[\033[0m\]\[\033[38;2;140;140;140m\]:\[\033[0m\]\[\033[38;2;111;171;255m\]\w\[\033[0m\]\[\033[38;2;238;187;68m\]\$\[\033[0m\] '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -81,8 +88,21 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# colored GCC warnings and errors (aperture palette)
+export GCC_COLORS='error=01;38;2;255;111;111:warning=01;38;2;238;187;68:note=01;38;2;111;171;255:caret=01;38;2;111;219;136:locus=01;38;2;252;149;5:quote=01;38;2;252;149;5'
+
+# less colors (aperture)
+export LESS='-R'
+export LESS_TERMCAP_mb=$'\033[1;38;2;255;111;111m'
+export LESS_TERMCAP_md=$'\033[1;38;2;252;149;5m'
+export LESS_TERMCAP_me=$'\033[0m'
+export LESS_TERMCAP_se=$'\033[0m'
+export LESS_TERMCAP_so=$'\033[1;38;2;20;11;5;48;2;238;187;68m'
+export LESS_TERMCAP_ue=$'\033[0m'
+export LESS_TERMCAP_us=$'\033[4;38;2;111;171;255m'
+
+# grep colors (aperture)
+export GREP_COLORS='ms=01;38;2;238;187;68:mc=01;38;2;238;187;68:sl=:cx=:fn=38;2;111;171;255:ln=38;2;140;140;140:bn=38;2;140;140;140:se=38;2;140;140;140'
 
 # some more ls aliases
 alias ll='ls -alF'

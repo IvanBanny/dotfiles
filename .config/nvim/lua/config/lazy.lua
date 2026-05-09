@@ -23,4 +23,4 @@ require("lazy").setup({
     checker = { enabled = true },
 })
 
-vim.cmd.colorscheme("anderson")
+vim.cmd.colorscheme("aperture")

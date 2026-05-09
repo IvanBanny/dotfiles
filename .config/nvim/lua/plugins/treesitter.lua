@@ -1,27 +1,23 @@
 return {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     lazy = false,
     build = ":TSUpdate",
     config = function()
-        -- Asynchronous installation of parsers
-        require("nvim-treesitter").install({
-            "c",
-            "cpp",
-            "python",
-            "lua",
-            "vim",
-            "vimdoc",
-            "query"
-        })
-
-        vim.api.nvim_create_autocmd("FileType", {
-            pattern = "*",
-            callback = function()
-                -- pcall prevents buffer crashes if a specific parser is missing
-                if pcall(vim.treesitter.start) then
-                    vim.bo.indentexpr = "v:lua.require(\"nvim-treesitter\").indentexpr()"
-                end
-            end,
+        require("nvim-treesitter.configs").setup({
+            ensure_installed = {
+                "c",
+                "cpp",
+                "python",
+                "lua",
+                "vim",
+                "vimdoc",
+                "query",
+            },
+            sync_install = false,
+            auto_install = true,
+            highlight = { enable = true },
+            indent = { enable = true },
         })
     end,
 }
