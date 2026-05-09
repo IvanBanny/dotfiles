@@ -20,7 +20,7 @@
     "workbench.browser.showInTitleBar": false,
 
     // Aperture theme — applied on top of Default Dark Modern
-    "workbench.colorTheme": "Dark Modern",
+    "workbench.colorTheme": "Default Dark Modern",
     "workbench.colorCustomizations": {
         // Editor
         "editor.background": "#140B05",
