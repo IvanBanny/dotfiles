@@ -18,6 +18,11 @@ map("n", "<leader>gg", function() vscode.action("workbench.view.scm") end)
 map("n", "\t", function() vscode.action("workbench.action.nextEditorInGroup") end)
 map("n", "<S-\t>", function() vscode.action("workbench.action.previousEditorInGroup") end)
 
+-- Navigate by visual (wrapped) lines, matching nvim's gj/gk behavior.
+-- Limited to {n,x}; operator-pending stays logical so dj/yj act on whole lines.
+map({"n", "x"}, "j", function() vscode.action("cursorDown") end)
+map({"n", "x"}, "k", function() vscode.action("cursorUp") end)
+
 -- Coding
 map({"n", "v", "o"}, "<S-j>", function() vscode.action("editor.action.moveLinesDownAction") end)
 map({"n", "v", "o"}, "<S-k>", function() vscode.action("editor.action.moveLinesUpAction") end)
