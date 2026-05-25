@@ -19,6 +19,15 @@
     "workbench.layoutControl.enabled": false,
     "workbench.browser.showInTitleBar": false,
 
+    // LaTeX Workshop
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    "latex-workshop.latex.autoClean.run": "onBuilt",
+    "latex-workshop.latex.clean.subfolder.enabled": true,
+
+    // Python environments
+    "python-envs.defaultEnvManager": "ms-python.python:conda",
+    "python-envs.defaultPackageManager": "ms-python.python:conda",
+
     // Aperture theme — applied on top of Default Dark Modern
     "workbench.colorTheme": "Default Dark Modern",
     "workbench.colorCustomizations": {

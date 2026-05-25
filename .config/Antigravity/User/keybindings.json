@@ -6,6 +6,10 @@
     },
     // Navigation
     {
+        "key": "alt+enter",
+        "command": "workbench.action.focusActiveEditorGroup"
+    },
+    {
         "key": "ctrl+h",
         "command": "workbench.action.navigateLeft",
     },
