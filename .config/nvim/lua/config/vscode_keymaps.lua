@@ -19,9 +19,13 @@ map("n", "\t", function() vscode.action("workbench.action.nextEditorInGroup") en
 map("n", "<S-\t>", function() vscode.action("workbench.action.previousEditorInGroup") end)
 
 -- Navigate by visual (wrapped) lines, matching nvim's gj/gk behavior.
--- Limited to {n,x}; operator-pending stays logical so dj/yj act on whole lines.
-map({"n", "x"}, "j", function() vscode.action("cursorDown") end)
-map({"n", "x"}, "k", function() vscode.action("cursorUp") end)
+-- Normal mode only: in visual mode, let neovim own the motion (via gj/gk) so the
+-- selection anchor extends. Routing j/k through a vscode action there moves the
+-- vscode cursor without updating neovim's visual anchor, collapsing the selection.
+map("n", "j", function() vscode.action("cursorDown") end)
+map("n", "k", function() vscode.action("cursorUp") end)
+map("x", "j", "gj")
+map("x", "k", "gk")
 
 -- Coding
 map({"n", "v", "o"}, "<S-j>", function() vscode.action("editor.action.moveLinesDownAction") end)
@@ -33,4 +37,6 @@ map("n", "<leader>cs", function() vscode.action("workbench.action.gotoSymbol") e
 map("n", "<leader>gd", function() vscode.action("editor.action.revealDefinition") end)
 map("n", "<leader>gr", function() vscode.action("editor.action.goToReferences") end)
 map("n", "<leader>gi", function() vscode.action("editor.action.goToImplementation") end)
+map("n", "<leader>f", function() vscode.action("editor.action.formatDocument") end)
+map("x", "<leader>f", function() vscode.action("editor.action.formatSelection") end)
 map({"n", "v"}, "<C-n>", function() vscode.action("editor.action.addSelectionToNextFindMatch") end)

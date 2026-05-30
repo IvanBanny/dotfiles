@@ -10,20 +10,42 @@
         "command": "workbench.action.focusActiveEditorGroup"
     },
     {
-        "key": "ctrl+h",
+        "key": "alt+h",
         "command": "workbench.action.navigateLeft",
     },
     {
-        "key": "ctrl+j",
+        "key": "alt+j",
         "command": "workbench.action.navigateDown",
     },
     {
-        "key": "ctrl+k",
+        "key": "alt+k",
         "command": "workbench.action.navigateUp",
     },
     {
-        "key": "ctrl+l",
+        "key": "alt+l",
         "command": "workbench.action.navigateRight",
+    },
+    // Escape webview editors (PDF preview): navigate* is a no-op from a focused
+    // webview (VS Code #100536), so fall back to grid-group focus there.
+    {
+        "key": "alt+h",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+    },
+    {
+        "key": "alt+j",
+        "command": "workbench.action.focusBelowGroup",
+        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+    },
+    {
+        "key": "alt+k",
+        "command": "workbench.action.focusAboveGroup",
+        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+    },
+    {
+        "key": "alt+l",
+        "command": "workbench.action.focusRightGroup",
+        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
     },
     {
         "key": "space ,",
@@ -135,12 +157,12 @@
         "when": "notebookEditorFocused && !inputFocus"
     },
     {
-        "key": "alt+j",
+        "key": "ctrl+j",
         "command": "notebook.cell.moveDown",
         "when": "notebookEditorFocused && !inputFocus"
     },
     {
-        "key": "alt+k",
+        "key": "ctrl+k",
         "command": "notebook.cell.moveUp",
         "when": "notebookEditorFocused && !inputFocus"
     },

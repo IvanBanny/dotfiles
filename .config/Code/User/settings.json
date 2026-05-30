@@ -8,6 +8,8 @@
     "workbench.activityBar.location": "hidden",
     "workbench.editor.editorActionsLocation": "hidden",
     "editor.minimap.enabled": false,
+    "editor.cursorSurroundingLines": 8,
+    "editor.cursorSurroundingLinesStyle": "all",
     "terminal.integrated.inheritEnv": false,
     "editor.inlineSuggest.enabled": false,
     "explorer.compactFolders": false,
@@ -18,6 +20,8 @@
     "window.commandCenter": false,
     "workbench.layoutControl.enabled": false,
     "workbench.browser.showInTitleBar": false,
+    // Free up Alt+letter (esp. Alt+H Help) so Alt+h/j/k/l can be navigation
+    "window.enableMenuBarMnemonics": false,
 
     // LaTeX Workshop
     "latex-workshop.latex.outDir": "%DIR%/build",
@@ -29,7 +33,7 @@
     "python-envs.defaultPackageManager": "ms-python.python:conda",
 
     // Aperture theme — applied on top of Default Dark Modern
-    "workbench.colorTheme": "Default Dark Modern",
+    "workbench.colorTheme": "Dark Modern",
     "workbench.colorCustomizations": {
         // Editor
         "editor.background": "#140B05",
@@ -194,5 +198,6 @@
             { "scope": ["markup.inline.raw"], "settings": { "foreground": "#EEBB44" } },
             { "scope": ["markup.underline.link"], "settings": { "foreground": "#6FABFF", "fontStyle": "underline" } }
         ]
-    }
+    },
+    "jupyter.interactiveWindow.creationMode": "perFile"
 }
