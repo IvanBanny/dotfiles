@@ -80,7 +80,23 @@ return {
         dap.configurations.cpp = launch_config
         dap.configurations.cuda = launch_config
 
-        -- debugpy adapter for Python.
+        -- Resolve the active python: venv (uv etc.), then conda env (if any),
+        -- else the uv-managed default. Whichever env you launched nvim from
+        -- runs the debuggee. The adapter itself runs from mason's debugpy, so
+        -- the target env does not need debugpy installed.
+        local function active_python()
+            local venv = os.getenv("VIRTUAL_ENV")
+            if venv then
+                return venv .. "/bin/python"
+            end
+            local conda = os.getenv("CONDA_PREFIX")
+            if conda then
+                return conda .. "/bin/python"
+            end
+            return "/home/ivan/.local/bin/python3"
+        end
+
+        -- debugpy adapter for Python (runs from mason's debugpy install).
         dap.adapters.debugpy = {
             type = "executable",
             command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
@@ -94,7 +110,7 @@ return {
                 request = "launch",
                 program = "${file}",
                 cwd = "${workspaceFolder}",
-                pythonPath = "python3",
+                pythonPath = active_python(),
             },
         }
 

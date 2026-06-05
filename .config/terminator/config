@@ -1,5 +1,7 @@
 [global_config]
 [keybindings]
+  go_next = ""
+  go_prev = ""
   go_up = <Alt>k
   go_down = <Alt>j
   go_left = <Alt>h

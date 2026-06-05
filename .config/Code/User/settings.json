@@ -28,11 +28,12 @@
     "latex-workshop.latex.autoClean.run": "onBuilt",
     "latex-workshop.latex.clean.subfolder.enabled": true,
 
-    // Python environments
-    "python-envs.defaultEnvManager": "ms-python.python:conda",
-    "python-envs.defaultPackageManager": "ms-python.python:conda",
+    // Python environments - uv-managed venvs
+    "python-envs.defaultEnvManager": "ms-python.python:venv",
+    "python-envs.defaultPackageManager": "ms-python.python:pip",
+    "python-envs.alwaysUseUv": true,
 
-    // Aperture theme — applied on top of Default Dark Modern
+    // Aperture theme - applied on top of Default Dark Modern
     "workbench.colorTheme": "Dark Modern",
     "workbench.colorCustomizations": {
         // Editor
@@ -153,7 +154,7 @@
         "notifications.foreground": "#FC9505",
         "notifications.border": "#FC9505",
 
-        // Terminal — same palette as terminator
+        // Terminal - same palette as terminator
         "terminal.background": "#140B05",
         "terminal.foreground": "#FC9505",
         "terminalCursor.background": "#140B05",
