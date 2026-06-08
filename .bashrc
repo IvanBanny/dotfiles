@@ -178,3 +178,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export YDOTOOL_SOCKET="$XDG_RUNTIME_DIR/.ydotool_socket"
+. "$HOME/.cargo/env"
+
+# >>> newsboat sync (nbsync) >>>
+export PATH="$HOME/.local/bin:$PATH"
+# `nb` = sync with peer, read, sync again. Peer offline -> nbsync is a no-op.
+nb() { nbsync || true; command newsboat "$@"; setsid -f nbsync >/dev/null 2>&1; }
+# <<< newsboat sync (nbsync) <<<
