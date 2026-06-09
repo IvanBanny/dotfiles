@@ -8,9 +8,10 @@ return {
 
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-        vim.lsp.config("clangd", {            
+        vim.lsp.config("clangd", {
             capabilities = capabilities,
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda", "proto" },
+            root_markers = { "compile_commands.json", "compile_flags.txt", ".clangd", ".git" },
             cmd = {
                 "clangd",
                 "--background-index",
@@ -25,6 +26,14 @@ return {
             capabilities = capabilities,
             filetypes = { "python" },
             cmd = { "pyright-langserver", "--stdio" },
+            root_markers = { "pyproject.toml", "setup.py", "requirements.txt", ".git" },
+            before_init = function(_, config)
+                -- point pyright at the project's uv/venv python if present
+                local python = config.root_dir and (config.root_dir .. "/.venv/bin/python")
+                if python and vim.uv.fs_stat(python) then
+                    config.settings.python.pythonPath = python
+                end
+            end,
             settings = {
                 python = {
                     analysis = {
@@ -40,6 +49,7 @@ return {
             capabilities = capabilities,
             filetypes = { "python" },
             cmd = { "ruff", "server" },
+            root_markers = { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" },
         })
 
         vim.lsp.enable({ "clangd", "pyright", "ruff" })

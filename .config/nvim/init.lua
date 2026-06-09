@@ -10,5 +10,6 @@ if vim.g.vscode then
 else
     -- native nvim setup
     require("config.rsync")
+    require("config.runner")
     require("config.lazy")
 end
