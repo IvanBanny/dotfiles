@@ -80,14 +80,18 @@ return {
         dap.configurations.cpp = launch_config
         dap.configurations.cuda = launch_config
 
-        -- Resolve the active python: venv (uv etc.), then conda env (if any),
-        -- else the uv-managed default. Whichever env you launched nvim from
-        -- runs the debuggee. The adapter itself runs from mason's debugpy, so
-        -- the target env does not need debugpy installed.
+        -- Resolve the active python: activated venv, then project-local .venv
+        -- (uv convention, mirrors what `uv run` would pick), then conda env,
+        -- else the uv-managed default. The adapter itself runs from mason's
+        -- debugpy, so the target env does not need debugpy installed.
         local function active_python()
             local venv = os.getenv("VIRTUAL_ENV")
             if venv then
                 return venv .. "/bin/python"
+            end
+            local local_venv = vim.fn.getcwd() .. "/.venv/bin/python"
+            if vim.fn.executable(local_venv) == 1 then
+                return local_venv
             end
             local conda = os.getenv("CONDA_PREFIX")
             if conda then
@@ -110,7 +114,7 @@ return {
                 request = "launch",
                 program = "${file}",
                 cwd = "${workspaceFolder}",
-                pythonPath = active_python(),
+                pythonPath = active_python,
             },
         }
 
@@ -130,9 +134,13 @@ return {
 
         -- Keymaps.
         vim.keymap.set("n", "<F5>", dap.continue, { desc = "Debug: Continue" })
-        vim.keymap.set("n", "<F10>", dap.step_over, { desc = "Debug: Step over" })
-        vim.keymap.set("n", "<F11>", dap.step_into, { desc = "Debug: Step into" })
-        vim.keymap.set("n", "<F12>", dap.step_out, { desc = "Debug: Step out" })
+        vim.keymap.set("n", "<F6>", dap.step_over, { desc = "Debug: Step over" })
+        vim.keymap.set("n", "<F7>", dap.step_into, { desc = "Debug: Step into" })
+        vim.keymap.set("n", "<F8>", dap.step_out, { desc = "Debug: Step out" })
+        vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "Debug: Continue" })
+        vim.keymap.set("n", "<leader>dn", dap.step_over, { desc = "Debug: Step over" })
+        vim.keymap.set("n", "<leader>di", dap.step_into, { desc = "Debug: Step into" })
+        vim.keymap.set("n", "<leader>do", dap.step_out, { desc = "Debug: Step out" })
         vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle breakpoint" })
         vim.keymap.set("n", "<leader>B", function()
             dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))

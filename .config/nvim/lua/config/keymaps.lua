@@ -29,6 +29,8 @@ map("n", "N", "Nzzzv")
 
 -- Questionably better editing
 map("n", "J", "mzJ'z")
+map("n", "<leader>j", "mzJ'z")
+map("x", "<leader>j", "J")
 map("n", "Y", "yg$")
 
 -- Clipboard & register control

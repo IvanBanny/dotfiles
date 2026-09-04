@@ -50,3 +50,7 @@ vim.opt.timeoutlen = 500
 -- === Splits ===
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- === Providers ===
+-- Dedicated venv holding pynvim + jupyter_client (used by molten-nvim)
+vim.g.python3_host_prog = vim.fn.expand("~/.virtualenvs/neovim/bin/python")

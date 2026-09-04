@@ -30,6 +30,7 @@ map("x", "k", "gk")
 -- Coding
 map({"n", "v", "o"}, "<S-j>", function() vscode.action("editor.action.moveLinesDownAction") end)
 map({"n", "v", "o"}, "<S-k>", function() vscode.action("editor.action.moveLinesUpAction") end)
+map({"n", "v"}, "<leader>j", function() vscode.action("editor.action.joinLines") end)
 map("n", "<S-k>", function() vscode.action("editor.action.showHover") end)
 map("n", "<leader>ca", function() vscode.action("editor.action.codeAction") end)
 map("n", "<leader>cr", function() vscode.action("editor.action.rename") end)
