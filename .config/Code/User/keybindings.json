@@ -113,6 +113,11 @@
     },
     // Notebook
     {
+        "key": "enter",
+        "command": "notebook.cell.execute",
+        "when": "notebookEditorFocused && !inputFocus || notebookEditorFocused && neovim.mode == 'normal'"
+    },
+    {
         "key": "j",
         "command": "runCommands",
         "args": {
@@ -181,6 +186,16 @@
         "command": "notebook.clearAllCellsOutputs",
         "when": "notebookEditorFocused && !inputFocus"
     },
+    {
+        "key": "space f",
+        "command": "notebook.formatCell",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
+    {
+        "key": "/",
+        "command": "notebook.find",
+        "when": "notebookEditorFocused && !inputFocus"
+    },
     // Shoo!
     {
         "key": "ctrl+n",
@@ -193,5 +208,10 @@
     {
         "key": "ctrl+alt+b",
         "command": "-workbench.action.toggleAuxiliaryBar"
+    },
+    {
+        "key": "f",
+        "command": "-notebook.find",
+        "when": "notebookEditorFocused && !inputFocus && !notebookOutputInputFocused"
     },
 ]

@@ -41,3 +41,5 @@ map("n", "<leader>gi", function() vscode.action("editor.action.goToImplementatio
 map("n", "<leader>f", function() vscode.action("editor.action.formatDocument") end)
 map("x", "<leader>f", function() vscode.action("editor.action.formatSelection") end)
 map({"n", "v"}, "<C-n>", function() vscode.action("editor.action.addSelectionToNextFindMatch") end)
+map("n", "]d", function() vscode.action("editor.action.marker.next") end)
+map("n", "[d", function() vscode.action("editor.action.marker.prev") end)

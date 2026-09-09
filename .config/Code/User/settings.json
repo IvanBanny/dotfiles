@@ -200,5 +200,8 @@
             { "scope": ["markup.underline.link"], "settings": { "foreground": "#6FABFF", "fontStyle": "underline" } }
         ]
     },
-    "jupyter.interactiveWindow.creationMode": "perFile"
+    "jupyter.interactiveWindow.creationMode": "perFile",
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    }
 }
