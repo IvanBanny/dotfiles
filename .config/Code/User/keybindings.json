@@ -25,32 +25,32 @@
         "key": "alt+l",
         "command": "workbench.action.navigateRight",
     },
-    // Escape webview editors (PDF preview): navigate* is a no-op from a focused
-    // webview (VS Code #100536), so fall back to grid-group focus there.
+    // Escape non-text editors (PDF previews, Welcome, etc) where standard 
+    // navigate* without a when clause might get swallowed.
     {
         "key": "alt+h",
-        "command": "workbench.action.focusLeftGroup",
-        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+        "command": "workbench.action.navigateLeft",
+        "when": "!editorTextFocus"
     },
     {
         "key": "alt+j",
-        "command": "workbench.action.focusBelowGroup",
-        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+        "command": "workbench.action.navigateDown",
+        "when": "!editorTextFocus"
     },
     {
         "key": "alt+k",
-        "command": "workbench.action.focusAboveGroup",
-        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+        "command": "workbench.action.navigateUp",
+        "when": "!editorTextFocus"
     },
     {
         "key": "alt+l",
-        "command": "workbench.action.focusRightGroup",
-        "when": "activeCustomEditorId == 'latex-workshop-pdf-hook'"
+        "command": "workbench.action.navigateRight",
+        "when": "!editorTextFocus"
     },
     {
         "key": "space ,",
         "command": "workbench.action.showAllEditors",
-        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
+        "when": "(filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"
     },
     {
         "key": "tab",
@@ -65,12 +65,12 @@
     {
         "key": "space space",
         "command": "workbench.action.quickOpen",
-        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
+        "when": "(filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"
     },
     {
         "key": "space g g",
         "command": "workbench.view.scm",
-        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
+        "when": "(filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"
     },
     {
         "key": "space e",
@@ -81,17 +81,27 @@
                 "workbench.action.focusActiveEditorGroup"
             ]
         },
-        "when": "filesExplorerFocus || sideBarFocus || searchViewletFocus"
+        "when": "(filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"
     },
     {
         "key": "space t",
         "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active && (filesExplorerFocus || sideBarFocus || searchViewletFocus)"
+        "when": "terminal.active && (filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"
+    },
+    {
+        "key": "space b d",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "!editorTextFocus && !filesExplorerFocus && !searchViewletFocus && !terminalFocus && !inputFocus && neovim.mode != 'cmdline'"
     },
     {
         "key": "ctrl+w",
         "command": "workbench.action.closeActiveEditor",
-        "when": "!editorTextFocus && !filesExplorerFocus && !searchViewletFocus && !terminalFocus && neovim.mode != 'cmdline'"
+        "when": "!editorTextFocus && !filesExplorerFocus && !searchViewletFocus && !terminalFocus && !inputFocus && neovim.mode != 'cmdline'"
+    },
+    {
+        "key": "ctrl+w",
+        "command": "workbench.action.closeActiveEditor",
+        "when": "editorTextFocus && neovim.init && neovim.mode == normal"
     },
     // File Tree
     {

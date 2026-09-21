@@ -203,5 +203,6 @@
     "jupyter.interactiveWindow.creationMode": "perFile",
     "[python]": {
         "editor.defaultFormatter": "charliermarsh.ruff"
-    }
+    },
+    "git.openRepositoryInParentFolders": "never"
 }
