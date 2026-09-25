@@ -84,6 +84,11 @@
         "when": "(filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"
     },
     {
+        "key": "space e",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "!editorTextFocus && !filesExplorerFocus && !sideBarFocus && !searchViewletFocus && !inputFocus"
+    },
+    {
         "key": "space t",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminal.active && (filesExplorerFocus || sideBarFocus || searchViewletFocus) && !inputFocus"

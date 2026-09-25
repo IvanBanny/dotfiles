@@ -42,3 +42,5 @@ map("n", "<leader>d", "\"_d")
 -- Disable macro recording.
 map('n', 'q', "<Nop>")
 
+-- Python args to self assignments
+map("x", "<leader>a", ":s/\\v^(\\s*)(\\k+).*$/\\1self.\\2 = \\2/<CR><Cmd>nohlsearch<CR>")

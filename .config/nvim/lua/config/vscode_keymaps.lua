@@ -7,7 +7,6 @@ map("n", "<leader>w", function() vscode.action("workbench.action.files.save") en
 -- Navigation
 map("n", "<leader>,", function() vscode.action("workbench.action.showAllEditors") end)
 map("n", "<leader>e", function()
-    vscode.action("workbench.action.toggleSidebarVisibility")
     vscode.action("workbench.files.action.focusFilesExplorer")
 end)
 map("n", "<leader>t", function() vscode.action("workbench.action.terminal.toggleTerminal") end)
