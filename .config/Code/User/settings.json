@@ -3,7 +3,7 @@
         "asvetliakov.vscode-neovim": 1
     },
     "C_Cpp.default.compilerPath": "/usr/bin/gcc",
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+    "vscode-neovim.neovimExecutablePaths.linux": "/snap/nvim/current/usr/bin/nvim",
     "keyboard.dispatch": "keyCode",
     "workbench.activityBar.location": "hidden",
     "workbench.editor.editorActionsLocation": "hidden",
