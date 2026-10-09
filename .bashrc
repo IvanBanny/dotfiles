@@ -122,6 +122,17 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
+# Clear kitty's screen and scrollback when running the plain clear command
+if [[ "$TERM" == "xterm-kitty" ]]; then
+    clear() {
+        if (( $# )); then
+            command clear "$@"
+        else
+            printf "\033[H\033[3J"
+        fi
+    }
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
